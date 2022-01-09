@@ -13,3 +13,7 @@ class LipiUserSerializer(serializers.ModelSerializer):
 
 class LipiVerifyUserSerializer(serializers.Serializer):
     user_ids = serializers.ListField(child=serializers.IntegerField(), allow_empty=False, allow_null=False)
+
+
+class LipiVerifyUserResponseSerializer(serializers.Serializer):
+    invalid_user_ids = serializers.ListField(child=serializers.IntegerField())

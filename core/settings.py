@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     # Third part apps
     'rest_framework',
     'psycopg2',
+    'drf_spectacular',
+    'drf_spectacular_sidecar',
 
     # Django apps
     'user'
@@ -143,3 +145,25 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'user.LipiUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'User API',
+    'DESCRIPTION': 'Pratilipi Demo - User API',
+    'VERSION': '1.0.0',
+    'CONTACT': {
+      'name': 'G Karthik Raja',
+      'email': 'gkartikraja@gmail.com'
+    },
+    'SWAGGER_UI_DIST': 'SIDECAR',
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
+    "SWAGGER_UI_SETTINGS": {
+        "deepLinking": True,
+        "persistAuthorization": True,
+        "displayOperationId": True,
+    },
+}
