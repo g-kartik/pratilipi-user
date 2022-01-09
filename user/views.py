@@ -31,4 +31,4 @@ class LipiAPIViewSet(ModelViewSet):
             user_ids = serializer.validated_data['user_ids']
             valid_user_ids = LipiUser.objects.filter(pk__in=user_ids).values_list('pk', flat=True)
             invalid_user_ids = [_id for _id in user_ids if _id not in valid_user_ids]
-            return Response(data=LipiVerifyUserResponseSerializer(invalid_user_ids).data, status=status.HTTP_200_OK)
+            return Response(data={'invalid_user_ids': invalid_user_ids}, status=status.HTTP_200_OK)
